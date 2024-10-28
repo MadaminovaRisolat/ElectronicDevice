@@ -61,7 +61,7 @@ public class HelloController {
             Laptop lp = new Laptop();
             lp.setName((textName.getText()));
 
-            lp.setType(DeviceType.SMARTPHONE);
+            lp.setType(DeviceType.LAPTOP);
             lp.setPrice( Double.parseDouble(textPrice.getText()) );
             lp.setWeight( Double.parseDouble( textWeight.getText()) );
 
@@ -72,7 +72,7 @@ public class HelloController {
             Tablet tb = new Tablet();
             tb.setName((textName.getText()));
 
-            tb.setType(DeviceType.SMARTPHONE);
+            tb.setType(DeviceType.TABLET);
             tb.setPrice( Double.parseDouble(textPrice.getText()) );
             tb.setWeight( Double.parseDouble( textWeight.getText()) );
 
