@@ -1,41 +1,43 @@
-# Device Modeling Program
-
-## Description
-This project is a Java application that models different types of devices using object-oriented programming principles. It implements a base class `Device` and derived classes for specific device types: `Smartphone`, `Laptop`, and `Tablet`. The program provides a graphical user interface (GUI) using JavaFX, allowing users to input device details, view a list of added devices, and remove devices from the list.
-
-### Features
-- **Device Types**: Supports three device types: Smartphone, Laptop, and Tablet.
-- **User-Friendly GUI**: Provides a TabPane interface for easy navigation between device types.
-- **Dynamic ListView**: Displays added devices in a list format, allowing for easy selection and removal.
-
-## Instructions to Run the Program
-1. **Prerequisites**: Ensure you have Java JDK 8 or higher and JavaFX installed on your machine.
-2. **Clone the Repository**: Clone this repository to your local machine.
 
 
-----------
 
-Sample Inputs for Each Type of Device
+
+
+
+
+
+
+
+Project Description
+
+This JavaFX application models various types of devices using object-oriented programming principles. It uses inheritance, with a base class Device representing a generic device, and derived classes (Smartphone, Laptop, Tablet) representing specific types of devices with unique attributes. The application provides a simple GUI to add, view, and remove devices from a list.
+
+Features
+
+Device Types: Choose between Smartphone, Laptop, or Tablet.
+Add Devices: Input common attributes (name, price, weight) and specific attributes for each device type.
+View Devices: Display added devices in a list with all details.
+Remove Devices: Remove any selected device from the list.
+
+Sample Inputs
+
+Use these sample inputs to test the application:
 
 Smartphone
-Name: iPhone 14
-Price: 999.99
-Weight: 0.174
-Screen Size: 6.1
-Camera Resolution: 12.0
+
+Name: "Galaxy S21"
+Price: 799.99
+Weight: 0.5 kg
 
 Laptop
 
-Name: Dell XPS 13
+Name: "MacBook Pro"
 Price: 1299.99
-Weight: 1.2
-RAM Size: 16
-Processor Type: Intel Core i7
+Weight: 2 kg
+
 
 Tablet
 
-Name: iPad Pro
-Price: 1099.00
-Weight: 0.682
-Battery Life: 10.0
-Has Stylus: true
+Name: "iPad Pro"
+Price: 999.99
+Weight: 0.7 kg
