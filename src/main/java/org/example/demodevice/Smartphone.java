@@ -1,6 +1,6 @@
 package org.example.demodevice;
 
-public class Smartphone extends Device{
+public class Smartphone extends Device {
     protected int screenSize;
     protected int resolution;
 
@@ -12,6 +12,15 @@ public class Smartphone extends Device{
 
     public Smartphone(DeviceType type, String name, double price, double weight, int screenSize, int resolution) {
         super(type, name, price, weight);
+        this.screenSize = screenSize;
+        this.resolution = resolution;
+    }
+    ///start
+    public Smartphone(String name, double price, double weight, double v, int i) {
+        super(name, price, weight);
+    }
+    public Smartphone( String name, double price, double weight, int screenSize, int resolution) {
+        super(name, price, weight);
         this.screenSize = screenSize;
         this.resolution = resolution;
     }

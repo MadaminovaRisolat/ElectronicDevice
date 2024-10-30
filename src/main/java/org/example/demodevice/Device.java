@@ -1,7 +1,5 @@
 package org.example.demodevice;
 
-import java.util.Currency;
-
 public class Device {
     protected DeviceType type;
     protected String name;
@@ -16,6 +14,8 @@ public class Device {
         this.price = price;
         this.weight = weight;
     }
+
+
 
     public DeviceType getType() {
         return type;
@@ -48,4 +48,12 @@ public class Device {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public Device(String name, double price, double weight) {
+        this.name = name;
+        this.price = price;
+        this.weight = weight;
+    }
+
+
 }

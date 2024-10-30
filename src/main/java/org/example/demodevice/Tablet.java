@@ -1,25 +1,17 @@
 package org.example.demodevice;
 
 public class Tablet extends Device {
-    protected double batteryLife;
-    protected boolean hasStylus;
+    private double batteryLife;
+    private boolean hasStylus;
 
-    // Default constructor
     public Tablet() {}
 
-    // Constructor calling the parent class (Device) constructor
-    public Tablet(DeviceType type, String name, double price, double weight) {
-        super(type, name, price, weight);
-    }
-
-    // Full constructor with additional attributes for Tablet
     public Tablet(DeviceType type, String name, double price, double weight, double batteryLife, boolean hasStylus) {
         super(type, name, price, weight);
         this.batteryLife = batteryLife;
         this.hasStylus = hasStylus;
     }
 
-    // Getters and setters for the additional attributes
     public double getBatteryLife() {
         return batteryLife;
     }
@@ -28,7 +20,7 @@ public class Tablet extends Device {
         this.batteryLife = batteryLife;
     }
 
-    public boolean hasStylus() {
+    public boolean isHasStylus() {
         return hasStylus;
     }
 
@@ -39,12 +31,12 @@ public class Tablet extends Device {
     @Override
     public String toString() {
         return "Tablet{" +
-                "type=" + type +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", weight=" + weight +
-                ", batteryLife=" + batteryLife +
-                ", hasStylus=" + hasStylus +
+                "type=" + getType() +
+                ", name='" + getName() + '\'' +
+                ", price=" + getPrice() +
+                ", weight=" + getWeight() +
+                ", Battery Life=" + batteryLife +
+                " hours, Has Stylus=" + (hasStylus ? "Yes" : "No") +
                 '}';
     }
 }

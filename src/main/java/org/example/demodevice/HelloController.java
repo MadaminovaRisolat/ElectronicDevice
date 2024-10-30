@@ -2,26 +2,24 @@ package org.example.demodevice;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 public class HelloController {
 
-
-
-
+    // FXML elements
     @FXML
-    private ToggleGroup device;
+    private RadioButton rbSmartphone;
 
     @FXML
     private RadioButton rbLaptop;
 
     @FXML
-    private RadioButton rbSmartphone;
+    private RadioButton rbTablet;
 
     @FXML
-    private RadioButton rbTablet;
+    private ToggleGroup device;
 
     @FXML
     private TextField textName;
@@ -32,70 +30,75 @@ public class HelloController {
     @FXML
     private TextField textWeight;
 
-
     @FXML
     private ListView<Device> listView;
-
-    ObservableList<Device> devices = FXCollections.observableArrayList();
-
-    @FXML
-    public void initialize(){
-        listView.setItems(devices);
-    }
-
-
-    @FXML
-    void onAddClick(ActionEvent event) {
-
-        if(rbSmartphone.isSelected()) {
-            Smartphone sm = new Smartphone();
-            sm.setName(textName.getText());
-
-            sm.setType(DeviceType.SMARTPHONE);
-            sm.setPrice( Double.parseDouble(textPrice.getText()) );
-            sm.setWeight( Double.parseDouble( textWeight.getText()) );
-
-            devices.add(sm);
-        }
-        else if(rbLaptop.isSelected()){
-            Laptop lp = new Laptop();
-            lp.setName((textName.getText()));
-
-            lp.setType(DeviceType.LAPTOP);
-            lp.setPrice( Double.parseDouble(textPrice.getText()) );
-            lp.setWeight( Double.parseDouble( textWeight.getText()) );
-
-            devices.add(lp);
-        }
-
-        else if(rbTablet.isSelected()){
-            Tablet tb = new Tablet();
-            tb.setName((textName.getText()));
-
-            tb.setType(DeviceType.TABLET);
-            tb.setPrice( Double.parseDouble(textPrice.getText()) );
-            tb.setWeight( Double.parseDouble( textWeight.getText()) );
-
-            devices.add(tb);
-        }
-
-    }
 
     @FXML
     private Label label;
 
-    @FXML
-    protected void onListClicked(){
-        int id = listView.getSelectionModel().getSelectedIndex();
-        label.setText(devices.get(id).toString());
+    private ObservableList<Device> deviceList = FXCollections.observableArrayList();
 
+    // Initialize method
+    @FXML
+    public void initialize() {
+        listView.setItems(deviceList);
+        label.setText("Select a device to add or remove");
     }
 
+    // Event handler for Add button
     @FXML
-    private void onRemoveClick(){
-        int id = listView.getSelectionModel().getSelectedIndex();
-        label.setText( devices.get(id).getName() + " is removed." );
-        devices.remove(id);
+    public void onAddClick() {
+        try {
+            // Collect common attributes
+            String name = textName.getText();
+            double price = Double.parseDouble(textPrice.getText());
+            double weight = Double.parseDouble(textWeight.getText());
+
+            Device newDevice = null;
+
+            // Check which device type is selected and create the appropriate object
+            if (rbSmartphone.isSelected()) {
+                newDevice = new Smartphone(DeviceType.SMARTPHONE, name, price, weight, 6, 12); // screenSize: 6 inches, cameraResolution: 12 MP
+            } else if (rbLaptop.isSelected()) {
+                newDevice = new Laptop(DeviceType.LAPTOP, name, price, weight, 16, "Intel i7"); // ramSize: 16GB, processorType: "Intel i7"
+            } else if (rbTablet.isSelected()) {
+                newDevice = new Tablet(DeviceType.TABLET, name, price, weight, 10.0, true); // batteryLife: 10 hours, hasStylus: true
+            }
+
+            // Add new device to the list
+            if (newDevice != null) {
+                deviceList.add(newDevice);
+                label.setText(name + " added.");
+            }
+
+            // Clear input fields after adding
+            textName.clear();
+            textPrice.clear();
+            textWeight.clear();
+
+        } catch (NumberFormatException e) {
+            label.setText("Please enter valid numeric values for price and weight.");
+        }
     }
 
+    // Event handler for Remove button
+    @FXML
+    public void onRemoveClick() {
+        int selectedIndex = listView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1) {
+            Device removedDevice = deviceList.remove(selectedIndex);
+            label.setText(removedDevice.getName() + " removed.");
+        } else {
+            label.setText("Please select a device to remove.");
+        }
+    }
+
+    // Event handler for selecting from ListView
+    @FXML
+    public void onListClicked(MouseEvent event) {
+        Device selectedDevice = listView.getSelectionModel().getSelectedItem();
+        if (selectedDevice != null) {
+            label.setText("Selected: " + selectedDevice);
+        }
+    }
 }
