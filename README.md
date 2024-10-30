@@ -1,5 +1,4 @@
 
-https://github.com/user-attachments/assets/0dd5239f-c861-4788-949c-a10f01e071e6
 
 ![Screen Shot 2024-10-30 at 20 13 18](https://github.com/user-attachments/assets/071114a3-d1d9-4710-a4a3-43495e036944)
 
